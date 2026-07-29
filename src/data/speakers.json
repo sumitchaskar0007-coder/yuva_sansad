@@ -1,0 +1,182 @@
+[
+    {
+        "id": 1,
+        "name": "अजित दादा पवार",
+        "role": "उपमुख्यमंत्री, महाराष्ट्र",
+        "image": "/images/speakers/ajit.jpg"
+    },
+    {
+        "id": 2,
+        "name": "मनोहर पर्रीकर",
+        "role": "माजी मुख्यमंत्री, गोवा",
+        "image": "/images/speakers/manohar.jpg"
+    },
+    {
+        "id": 3,
+        "name": "प्रमोद सावंत",
+        "role": "मुख्यमंत्री, गोवा",
+        "image": "/images/speakers/pramod.jpeg"
+    },
+    {
+        "id": 4,
+        "name": "छगन भुजबळ",
+        "role": "मंत्री, महाराष्ट्र",
+        "image": "/images/speakers/bhujbhal.jpg"
+    },
+    {
+        "id": 5,
+        "name": "धनंजय मुंडे",
+        "role": "मंत्री, महाराष्ट्र",
+        "image": "/images/speakers/munde.png"
+    },
+    {
+        "id": 6,
+        "name": "चंद्रकांत दादा पाटील",
+        "role": "मंत्री, महाराष्ट्र",
+        "image": "/images/speakers/chandrakant.jpeg"
+    },
+    {
+        "id": 7,
+        "name": "सुधीर मुनगंटीवार",
+        "role": "माजी मंत्री, महाराष्ट्र",
+        "image": "/images/speakers/sudhir.jpeg"
+    },
+    {
+        "id": 8,
+        "name": "एकनाथ खडसे",
+        "role": "माजी मंत्री, महाराष्ट्र",
+        "image": "/images/speakers/khadse.jpg"
+    },
+    {
+        "id": 9,
+        "name": "भागवत कराड",
+        "role": "केंद्रीय मंत्री",
+        "image": "/images/speakers/bhagwat.jpg"
+    },
+    {
+        "id": 10,
+        "name": "अरविंद सावंत",
+        "role": "माजी केंद्रीय मंत्री / खासदार",
+        "image": "/images/speakers/arwind.jpg"
+    },
+    {
+        "id": 11,
+        "name": "सुप्रिया सुळे",
+        "role": "खासदार",
+        "image": "/images/speakers/supriya.jpg"
+    },
+    {
+        "id": 12,
+        "name": "हिना गावित",
+        "role": "खासदार",
+        "image": "/images/speakers/hina.jpg"
+    },
+    {
+        "id": 13,
+        "name": "वंदना चव्हाण",
+        "role": "खासदार (राज्यसभा)",
+        "image": "/images/speakers/vandana.jpeg"
+    },
+    {
+        "id": 14,
+        "name": "आनंदराव आडसुळ",
+        "role": "माजी खासदार",
+        "image": "/images/speakers/anand.jpg"
+    },
+    {
+        "id": 15,
+        "name": "शिवाजी आढळराव पाटील",
+        "role": "माजी खासदार",
+        "image": "/images/speakers/shivaji.jpg"
+    },
+    {
+        "id": 16,
+        "name": "हेमंत पाटील",
+        "role": "खासदार",
+        "image": "/images/speakers/hemant.jpg"
+    },
+    {
+        "id": 17,
+        "name": "राजू शेट्टी",
+        "role": "माजी खासदार, शेतकरी नेते",
+        "image": "/images/speakers/raju.jpeg"
+    },
+    {
+        "id": 18,
+        "name": "अर्जुन खोतकर",
+        "role": "आमदार",
+        "image": "/images/speakers/arjun.jpg"
+    },
+    {
+        "id": 19,
+        "name": "कपिल पाटील",
+        "role": "मंत्री / आमदार",
+        "image": "/images/speakers/kapil.jpg"
+    },
+    {
+        "id": 20,
+        "name": "संग्राम थोपटे",
+        "role": "आमदार",
+        "image": "/images/speakers/sangram.jpg"
+    },
+    {
+        "id": 21,
+        "name": "मेघा कुलकर्णी",
+        "role": "आमदार",
+        "image": "/images/speakers/megha.jpg"
+    },
+    {
+        "id": 22,
+        "name": "नरेंद्र पवार",
+        "role": "आमदार",
+        "image": "/images/speakers/narendra.jpg"
+    },
+    {
+        "id": 23,
+        "name": "भीमराव (अण्णा) तापकीर",
+        "role": "आमदार",
+        "image": "/images/speakers/bhimrao.jpg"
+    },
+    {
+        "id": 24,
+        "name": "विजयबापू शिवतारे",
+        "role": "माजी मंत्री / आमदार",
+        "image": "/images/speakers/vijaybare.jpeg"
+    },
+    {
+        "id": 25,
+        "name": "तानाजी सावंत",
+        "role": "मंत्री / आमदार",
+        "image": "/images/speakers/tanhaji.jpg"
+    },
+    {
+        "id": 26,
+        "name": "महेश दादा लांडगे",
+        "role": "आमदार",
+        "image": "/images/speakers/mahesh.jpg"
+    },
+    {
+        "id": 27,
+        "name": "कैलास पाटील",
+        "role": "आमदार",
+        "image": "/images/speakers/kailas.jpg"
+    },
+    {
+        "id": 28,
+        "name": "समाधान आवताडे",
+        "role": "आमदार",
+        "image": "/images/speakers/samdhan.jpeg"
+    },
+    {
+        "id": 29,
+        "name": "सत्यजित तांबे",
+        "role": "आमदार (विधानपरिषद)",
+        "image": "/images/speakers/satyajit.jpeg"
+    },
+    {
+        "id": 30,
+        "name": "नीलमताई गोरे",
+        "role": "आमदार",
+        "image": "/images/speakers/nilam.jpeg"
+    }
+]
