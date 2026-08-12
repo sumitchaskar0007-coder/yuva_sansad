@@ -46,6 +46,28 @@ const AdminDashboard = () => {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="overflow-hidden rounded-lg bg-white shadow">
+              <div className="p-6">
+                <div className="flex items-center">
+                  <div className="flex-shrink-0 rounded-md bg-[#0a2a66] p-3 text-white">
+                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3M5 11h14M5 5h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" /></svg>
+                  </div>
+                  <div className="ml-5"><h3 className="text-lg font-medium text-gray-900">Event Management</h3><p className="mt-1 text-sm text-gray-500">Create, publish, edit, and delete events</p></div>
+                </div>
+                <div className="mt-6"><Link to="/admin/events" className="inline-flex items-center rounded-md bg-[#0a2a66] px-4 py-2 text-sm font-medium text-white hover:bg-blue-950">Manage Events</Link></div>
+              </div>
+            </div>
+            <div className="overflow-hidden rounded-lg bg-white shadow">
+              <div className="p-6">
+                <div className="flex items-center">
+                  <div className="flex-shrink-0 rounded-md bg-[#7b1d1d] p-3 text-white">
+                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h7l2 2h5a2 2 0 012 2v10a2 2 0 01-2 2zM7 10h10M7 14h7" /></svg>
+                  </div>
+                  <div className="ml-5"><h3 className="text-lg font-medium text-gray-900">News Management</h3><p className="mt-1 text-sm text-gray-500">Publish website news and announcements</p></div>
+                </div>
+                <div className="mt-6"><Link to="/admin/news" className="inline-flex items-center rounded-md bg-[#7b1d1d] px-4 py-2 text-sm font-medium text-white hover:bg-[#651717]">Manage News</Link></div>
+              </div>
+            </div>
             {/* Gallery Management Card */}
             <div className="bg-white overflow-hidden shadow rounded-lg">
               <div className="p-6">
@@ -71,7 +93,7 @@ const AdminDashboard = () => {
                       Gallery Management
                     </h3>
                     <p className="mt-1 text-sm text-gray-500">
-                      Manage your gallery images
+                      Manage gallery photos and videos
                     </p>
                   </div>
                 </div>

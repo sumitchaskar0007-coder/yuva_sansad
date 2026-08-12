@@ -18,6 +18,12 @@ body {
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .field {
+    @apply w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-[#0a2a66] focus:ring-2 focus:ring-blue-100;
+  }
+}
+
 .container-wide {
   @apply max-w-6xl mx-auto px-4;
 }
@@ -100,4 +106,63 @@ code {
 
 img {
   animation: fadeIn 0.3s ease-in;
+}
+
+.news-carousel-section {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(123, 29, 29, 0.08), transparent 28%),
+    radial-gradient(circle at 85% 80%, rgba(10, 42, 102, 0.1), transparent 30%),
+    linear-gradient(120deg, #fffafa 0%, #ffffff 48%, #f5f8ff 100%);
+}
+
+.news-marquee-mask {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+.news-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: news-scroll-right-to-left 18s linear infinite;
+  will-change: transform;
+}
+
+.news-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.news-marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.news-marquee-card {
+  border: 1px solid rgba(123, 29, 29, 0.1);
+  border-radius: 0.35rem;
+  box-shadow: 0 14px 38px rgba(10, 42, 102, 0.12);
+  transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+}
+
+.news-marquee-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(123, 29, 29, 0.32);
+  box-shadow: 0 20px 45px rgba(10, 42, 102, 0.17);
+}
+
+@keyframes news-scroll-right-to-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-marquee-track {
+    animation: none;
+  }
+
+  .news-marquee-mask {
+    overflow-x: auto;
+  }
 }

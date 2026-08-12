@@ -2,8 +2,10 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import HeroSlider from '../components/HeroSlider';
 import { useEffect, useState } from 'react';
-import { dbApi } from '../lib/firebase';
+import { eventAPI } from '../api';
 import SpeakersAutoSlider from '../components/SpeakersAutoSlider';
+import NewsCarousel from '../components/NewsCarousel';
+import { eventImageFallback, latestEvents, normalizeEvent } from '../data/events';
 
 function Section({ title, children, cta, id }) {
   return (
@@ -32,66 +34,13 @@ export default function Home() {
     const loadEvents = async () => {
       try {
         setIsLoading(true);
-        // Check if dbApi methods exist
-        if (!dbApi || !dbApi.getDocs || !dbApi.collection || !dbApi.db) {
-          console.error('Firebase API methods not available');
-          // Fallback to dummy data if Firebase fails
-          setEvents([
-            {
-              id: '1',
-              title: 'National Youth Conclave 2024',
-              description: 'Annual gathering of youth leaders from across India'
-            },
-            {
-              id: '2',
-              title: 'Leadership Workshop',
-              description: 'Interactive session on democratic leadership skills'
-            },
-            {
-              id: '3',
-              title: 'Policy Discussion Forum',
-              description: 'Youth perspectives on national policy making'
-            }
-          ]);
-          return;
-        }
-
-        const eventsCollection = dbApi.collection(dbApi.db, 'events');
-        const snapshot = await dbApi.getDocs(eventsCollection);
-        const eventsData = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data()
-        }));
-
-        // Sort by date or any other field if available
-        const sortedEvents = eventsData.sort((a, b) => {
-          if (a.date && b.date) {
-            return new Date(b.date) - new Date(a.date);
-          }
-          return 0;
-        });
-
-        setEvents(sortedEvents.slice(0, 3));
+        const { data } = await eventAPI.getPublished({ limit: 3 });
+        const apiEvents = Array.isArray(data) ? data.map(normalizeEvent) : [];
+        setEvents(apiEvents.length ? apiEvents : latestEvents.map(normalizeEvent));
       } catch (err) {
         console.error('Events load failed:', err);
         // Fallback data
-        setEvents([
-          {
-            id: '1',
-            title: 'National Youth Conclave 2024',
-            description: 'Annual gathering of youth leaders from across India'
-          },
-          {
-            id: '2',
-            title: 'Leadership Workshop',
-            description: 'Interactive session on democratic leadership skills'
-          },
-          {
-            id: '3',
-            title: 'Policy Discussion Forum',
-            description: 'Youth perspectives on national policy making'
-          }
-        ]);
+        setEvents(latestEvents.map(normalizeEvent));
       } finally {
         setIsLoading(false);
       }
@@ -260,13 +209,16 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Latest news carousel */}
+      <NewsCarousel />
+
       {/* INSPIRING YOUTH SECTION */}
       <section className="py-16 md:py-24" aria-labelledby="inspiring-youth-heading">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
 
-            {/* LEFT STICKY HEADING (NAVBAR SAFE) */}
-            <div className="lg:sticky lg:top-24">
+            {/* LEFT STICKY HEADING — offset below the fixed desktop navbar */}
+            <div className="self-start lg:sticky lg:top-40">
               <h2
                 id="inspiring-youth-heading"
                 className="text-4xl font-extrabold text-[#0a2a66] leading-tight"
@@ -346,23 +298,29 @@ export default function Home() {
         ) : (
           <div className="grid md:grid-cols-3 gap-6">
             {events.map((event) => (
-              <div
+              <article
                 key={event.id}
-                className="bg-white p-6 rounded-lg border shadow-sm hover:shadow-md transition-shadow"
+                className="group overflow-hidden rounded-xl border bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
               >
+                <Link to={`/events/${event.id}`} className="block overflow-hidden">
+                  <img
+                    src={event.image || event.imageUrl || eventImageFallback}
+                    alt={event.title}
+                    onError={(e) => { e.currentTarget.src = eventImageFallback; }}
+                    className="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </Link>
+                <div className="p-6">
                 <h3 className="font-semibold text-lg text-gray-900 mb-3">
                   {event.title}
                 </h3>
                 <p className="text-gray-600">
                   {event.description}
                 </p>
-                {event.date && (
+                {(event.date || event.eventDate) && (
                   <p className="text-sm text-gray-500 mt-3">
-                    {new Date(event.date).toLocaleDateString('en-IN', {
-                      day: 'numeric',
-                      month: 'long',
-                      year: 'numeric'
-                    })}
+                    {event.date || new Date(event.eventDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
                   </p>
                 )}
                 <Link
@@ -371,7 +329,8 @@ export default function Home() {
                 >
                   View Details →
                 </Link>
-              </div>
+                </div>
+              </article>
             ))}
           </div>
         )}

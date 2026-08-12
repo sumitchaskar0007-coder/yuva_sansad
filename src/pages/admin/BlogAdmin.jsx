@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { blogAPI } from '../../api';
 import toast from 'react-hot-toast';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 
 const BlogAdmin = () => {
-    const navigate = useNavigate();
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
@@ -22,24 +19,6 @@ const BlogAdmin = () => {
     });
     const [imageFile, setImageFile] = useState(null);
     const [previewImage, setPreviewImage] = useState('');
-
-    // Quill editor configuration
-    const quillModules = {
-        toolbar: [
-            [{ 'header': [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike'],
-            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-            ['link', 'image'],
-            ['clean']
-        ]
-    };
-
-    const quillFormats = [
-        'header',
-        'bold', 'italic', 'underline', 'strike',
-        'list', 'bullet',
-        'link', 'image'
-    ];
 
     useEffect(() => {
         fetchBlogs();
@@ -451,13 +430,14 @@ const BlogAdmin = () => {
                             
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-2">Content *</label>
-                                <ReactQuill
-                                    theme="snow"
+                                <textarea
                                     value={formData.content}
-                                    onChange={handleContentChange}
-                                    modules={quillModules}
-                                    formats={quillFormats}
-                                    className="h-64 mb-12"
+                                    onChange={(event) => handleContentChange(event.target.value)}
+                                    rows="14"
+                                    maxLength="50000"
+                                    placeholder="Write the full article content here..."
+                                    className="block w-full resize-y rounded-md border border-gray-300 px-3 py-3 shadow-sm outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-100"
+                                    required
                                 />
                             </div>
                             

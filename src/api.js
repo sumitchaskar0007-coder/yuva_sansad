@@ -26,8 +26,11 @@ api.interceptors.response.use(
   (res) => res,
   (err) => {
     if (err.response?.status === 401) {
-      localStorage.clear();
-      window.location.href = "/admin/login";
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      if (window.location.pathname.startsWith("/admin") && window.location.pathname !== "/admin/login") {
+        window.location.assign("/admin/login");
+      }
     }
 
     return Promise.reject(err);
@@ -58,6 +61,35 @@ export const galleryAPI = {
     }),
 
   delete: (id) => api.delete(`/gallery/${id}`),
+};
+
+// ================= NEWS =================
+export const newsAPI = {
+  getPublished: (params) => api.get("/news", { params }),
+  getById: (id) => api.get(`/news/${id}`),
+  getAllAdmin: () => api.get("/news/admin/all"),
+  create: (data) =>
+    api.post("/news", data, {
+      headers: { "Content-Type": "multipart/form-data" },
+    }),
+  update: (id, data) =>
+    api.put(`/news/${id}`, data, {
+      headers: { "Content-Type": "multipart/form-data" },
+    }),
+  setPublished: (id, isPublished) =>
+    api.patch(`/news/${id}/publish`, { isPublished }),
+  delete: (id) => api.delete(`/news/${id}`),
+};
+
+// ================= EVENTS =================
+export const eventAPI = {
+  getPublished: (params) => api.get("/events", { params }),
+  getById: (id) => api.get(`/events/${id}`),
+  getAllAdmin: () => api.get("/events/admin/all"),
+  create: (data) => api.post("/events", data, { headers: { "Content-Type": "multipart/form-data" } }),
+  update: (id, data) => api.put(`/events/${id}`, data, { headers: { "Content-Type": "multipart/form-data" } }),
+  setPublished: (id, isPublished) => api.patch(`/events/${id}/publish`, { isPublished }),
+  delete: (id) => api.delete(`/events/${id}`),
 };
 
 // ================= PROGRAM =================

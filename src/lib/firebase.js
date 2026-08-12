@@ -9,13 +9,13 @@ import {
   getFirestore,
   collection,
   getDocs,
+  getDoc,
   addDoc,
   doc,
   deleteDoc,
   updateDoc,
   serverTimestamp,
 } from 'firebase/firestore';
-import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
   // Keep environment overrides for deployments, but use the project's checked-in
@@ -32,7 +32,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
-export const storage = getStorage(app);
 
 export const authApi = {
   onAuthStateChanged,
@@ -43,6 +42,7 @@ export const authApi = {
 export const dbApi = {
   collection,
   getDocs,
+  getDoc,
   addDoc,
   doc,
   deleteDoc,

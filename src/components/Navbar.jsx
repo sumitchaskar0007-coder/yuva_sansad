@@ -29,6 +29,8 @@ const Navbar = () => {
     { label: "Blog", path: "/blog" },
     { label: "Gallery", path: "/gallery" },
     { label: "Udan", path: "/udan" },
+    { label: "News", path: "/news" },
+    { label: "Events", path: "/events" },
     { label: "Contact", path: "/contact" },
   ];
 
@@ -214,7 +216,7 @@ const Navbar = () => {
             </div>
 
             {/* ================= NAV MENU ================= */}
-            <div className="flex justify-start gap-2 mt-3 flex-wrap">
+            <div className="-ml-[43%] mt-3 flex w-[143%] flex-wrap justify-center gap-2">
               {menu.map((item) => (
                 <Link
                   key={item.path}
