@@ -1,4 +1,4 @@
-import{j as e,L as n,r as d}from"./react-CK-8_ws8.js";import{m as p,n as u,F as c,a as j,b,H as v,e as y}from"./index-Cn_R7GEC.js";import{e as x,n as o,l as h}from"./events-Crd_6Xfo.js";import"./firebase-core-DjYB1kBr.js";import"./firebase-auth-CVFBbPdt.js";import"./firebase-firestore-CQvmVLRj.js";function f(){return e.jsxs("section",{className:`\r
+import{j as e,L as n,r as d}from"./react-CK-8_ws8.js";import{m as p,n as u,F as c,a as j,b,H as v,e as y}from"./index-UYhNTq6w.js";import{e as x,n as o,l as h}from"./events-Crd_6Xfo.js";import"./firebase-core-DjYB1kBr.js";import"./firebase-auth-CVFBbPdt.js";import"./firebase-firestore-CQvmVLRj.js";function f(){return e.jsxs("section",{className:`\r
         relative\r
         w-full\r
         overflow-hidden\r
